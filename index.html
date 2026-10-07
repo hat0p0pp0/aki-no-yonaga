@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141312">
+<title>秋の夜長 対話のしおり</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+/* Layout: キービジュアルと同じ「夜の黒板」。白いチョーク文字と灯明の金。上にKV、下に4タブ。単一の夜テーマ */
+:root{
+  --sumi:#141312;        /* 背景：墨 */
+  --panel:#211f1d;       /* カード面 */
+  --panel-2:#2c2926;     /* カード内の面 */
+  --chalk:#f7f4ec;       /* 本文：チョークの白 */
+  --chalk-2:#dcd6ca;     /* 補助文字（コントラスト高め） */
+  --tomyo:#f2c46a;       /* 灯明の金 */
+  --momiji:#f08a62;      /* 紅葉 */
+  --line:rgba(247,244,236,.18);
+  --f-hand:"Yusei Magic","Klee One","Hiragino Maru Gothic ProN",sans-serif;
+  --f-body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html,body{background:var(--sumi);color:var(--chalk)}
+body{font-family:var(--f-body);font-weight:500;font-size:16px;line-height:1.8;padding-inline:16px;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px));-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:900;line-height:1.4}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0;text-align:left}
+button:focus-visible,a:focus-visible{outline:3px solid var(--tomyo);outline-offset:3px;border-radius:10px}
+a{color:var(--tomyo)}
+
+/* KV */
+.hero{position:relative;margin-top:14px;padding:18px 20px 20px;border-radius:24px;background:radial-gradient(120% 90% at 85% 10%,#2b2a3a 0%,var(--panel) 55%,var(--sumi) 100%);border:1px solid var(--line);overflow:hidden;display:grid;gap:16px}
+.hero-art{display:block;width:100%;height:auto;margin:-6px 0 -6px}
+.hero-text{position:relative;display:grid;gap:6px}
+.kicker{font-family:var(--f-hand);font-size:clamp(16px,4.6vw,20px);color:var(--tomyo);line-height:1.5}
+.hero h1{font-family:var(--f-hand);font-weight:400;display:grid;line-height:1.2}
+.hero h1 .s{font-size:clamp(24px,7vw,32px)}
+.hero h1 .big{font-size:clamp(40px,12vw,58px);margin-left:-.35em;white-space:nowrap;text-shadow:0 3px 0 rgba(240,138,98,.45)}
+.friends{position:relative;display:flex;padding-left:8px;margin-top:4px;overflow:hidden}
+.friends .av{width:48px;height:48px;margin-left:-8px;border:3px solid var(--panel);border-radius:14px;transform:rotate(var(--r,0deg))}
+.hero .place{position:relative;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:14.5px;color:var(--chalk-2);border-top:1px dashed var(--line);padding-top:12px}
+.hero .place b{color:var(--tomyo);font-weight:700}
+.av{display:inline-block;flex:none;border-radius:24%;overflow:hidden;background:#fffbf0;line-height:0}
+.av img,.av svg{display:block;width:100%;height:100%;object-fit:cover}
+
+/* section */
+section[data-view]{padding-block:14px 28px;display:grid;gap:20px}
+.sec-head{display:grid;gap:8px}
+.tag{justify-self:start;font-size:13px;font-weight:700;letter-spacing:.12em;padding:3px 14px;background:var(--tomyo);color:var(--sumi);border-radius:99px}
+.sec-head h2{font-family:var(--f-hand);font-weight:600;font-size:27px;line-height:1.45}
+.sec-head p{color:var(--chalk-2);font-size:15px}
+.tap{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--tomyo);font-weight:700}
+
+/* ground rules */
+.rules{background:var(--panel);border:2px solid var(--tomyo);border-radius:20px;padding:20px 18px;display:grid;gap:16px}
+.rules h3{font-size:18px;color:var(--tomyo)}
+.rule-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rule{background:var(--panel-2);border-radius:14px;padding:14px 4px 12px;text-align:center;display:grid;gap:6px;justify-items:center}
+.rule svg{width:34px;height:34px}
+.rule b{font-size:15px;line-height:1.35}
+.flow{display:grid;gap:8px;font-size:15.5px}
+.flow ol{margin:0;padding-left:1.4em;display:grid;gap:6px}
+.clap{background:var(--momiji);color:var(--sumi);font-weight:900;border-radius:12px;padding:10px 14px;text-align:center;font-size:16px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--tomyo);margin-bottom:8px}
+
+/* teams */
+.teams{display:grid;gap:14px}
+.team{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.team.open{border-color:var(--c)}
+.team-btn{display:grid;grid-template-columns:56px 1fr 28px;gap:14px;align-items:start;padding:18px 16px;width:100%}
+.mark{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:28px;font-weight:900;color:var(--sumi);background:var(--c)}
+.team-btn .t{min-width:0;display:grid;gap:4px}
+.team-btn .name{font-size:19px;font-weight:900;line-height:1.45}
+.team-btn .common{font-size:14.5px;color:var(--chalk-2);line-height:1.6}
+.faces{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:8px}
+.face{display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:700}
+.face .av{width:32px;height:32px;border-radius:9px}
+.chev{align-self:center;width:28px;height:28px;border-radius:50%;background:var(--panel-2);display:grid;place-items:center;color:var(--tomyo);font-weight:900;transition:transform .25s}
+.team.open .chev{transform:rotate(90deg)}
+.team-body{padding:0 16px 20px;display:grid;gap:20px}
+.common-box{background:var(--panel-2);border-radius:14px;padding:12px 16px;font-size:16px;font-weight:700}
+.qs{display:grid;gap:12px}
+.q{background:var(--chalk);color:var(--sumi);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.q .n{width:34px;height:34px;border-radius:50%;background:var(--c);display:grid;place-items:center;font-weight:900;font-size:14px}
+.q .txt{font-size:17px;font-weight:700;line-height:1.65}
+.q small{display:block;font-size:12.5px;font-weight:700;color:#7a5a1e;margin-top:4px}
+.mlist{display:grid;gap:8px}
+.mrow{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;width:100%;background:var(--panel-2);border-radius:14px;padding:8px 12px}
+.mrow .av{width:52px;height:52px}
+.mrow .who{min-width:0;display:grid}
+.mrow .who b{font-size:16px}
+.mrow .who span{font-size:14.5px;color:var(--chalk-2);line-height:1.55}
+.hint{font-size:14.5px;color:var(--chalk-2);background:rgba(240,138,98,.12);border-radius:12px;padding:10px 14px}
+.hint b{color:var(--momiji)}
+
+/* people */
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px}
+.person{display:grid;justify-items:center;gap:4px;padding:12px 6px 14px;border-radius:18px;background:var(--panel);border:1px solid var(--line);text-align:center;transition:transform .15s}
+.person:active{transform:scale(.96)}
+.person .av{width:82px;height:82px}
+.person .nm{font-size:16px;font-weight:900;line-height:1.3;word-break:break-all}
+.person .an{font-size:12.5px;color:var(--chalk-2);line-height:1.3}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:20;opacity:0;transition:opacity .2s}
+.scrim.show{opacity:1}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;max-height:88%;overflow:auto;background:var(--panel);border-radius:24px 24px 0 0;border-top:2px solid var(--tomyo);padding:10px 20px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.sheet.show{transform:none}
+.sheet .grab{width:48px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.sheet .inner{max-width:520px;margin:0 auto;display:grid;gap:18px}
+.prof-head{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:center}
+.prof-head .av{width:104px;height:104px}
+.prof-head h3{font-size:26px}
+.prof-head .anm{font-size:14px;color:var(--tomyo);font-weight:700}
+.prof-head .role{font-size:14px;color:var(--chalk-2)}
+.moya{background:var(--chalk);color:var(--sumi);border-radius:16px;padding:16px;font-size:18px;font-weight:900;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:12px 14px;font-size:15.5px;align-items:baseline;margin:0}
+.kv dt{font-size:13.5px;color:var(--chalk-2);white-space:nowrap}
+.kv dd{margin:0;font-weight:700}
+.pill{display:inline-block;padding:2px 12px;border-radius:99px;font-size:15px;background:var(--panel-2);border:1px solid var(--line)}
+.pill.main{background:var(--tomyo);color:var(--sumi);border-color:var(--tomyo)}
+.anote{font-size:14px;color:var(--chalk-2);background:var(--panel-2);border-radius:12px;padding:12px 14px}
+.close{justify-self:stretch;text-align:center;padding:14px;border-radius:14px;background:var(--panel-2);font-weight:700;font-size:16px}
+
+/* about */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 18px;display:grid;gap:14px}
+.card h3{font-size:21px}
+.card p{font-size:15.5px}
+.temple-photo{margin:-20px -18px 2px;display:grid;gap:8px}
+.temple-photo img{display:block;width:100%;height:auto;border-radius:20px 20px 0 0}
+.temple-photo figcaption{font-size:13.5px;color:var(--chalk-2);padding:0 18px}
+.timeline{display:grid;font-size:15px}
+.timeline div{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.timeline div:last-child{border:0}
+.timeline b{color:var(--tomyo);font-variant-numeric:tabular-nums}
+.addr{font-size:14.5px;color:var(--chalk-2)}
+.btn{display:flex;justify-content:center;align-items:center;gap:8px;padding:13px 16px;border-radius:14px;font-weight:900;font-size:16px;text-decoration:none}
+.btn.gold{background:var(--tomyo);color:var(--sumi)}
+.btn.fb{background:#1877f2;color:#fff}
+.comm-top{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center}
+.comm-top img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--tomyo)}
+.comm-top .nick{font-size:24px;font-weight:900;line-height:1.3}
+.comm-top .full{font-size:15px;color:var(--chalk-2)}
+.comm .org{font-size:14.5px;font-weight:700;color:var(--tomyo)}
+.comm .links{display:grid;gap:8px}
+.comm .links a.art{font-size:14px;line-height:1.55;color:var(--chalk);text-decoration:underline;text-decoration-color:var(--tomyo);text-underline-offset:3px}
+
+/* tab bar */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;background:rgba(20,19,18,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+nav.tabs button{display:grid;justify-items:center;padding:6px 0 5px;border-radius:14px;font-size:13px;font-weight:700;color:var(--chalk-2);line-height:1.3}
+nav.tabs button .i{width:24px;height:24px;margin-bottom:2px}
+nav.tabs button[aria-current="page"]{color:var(--sumi);background:var(--tomyo)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero" id="hero">
+    <svg class="hero-art" viewBox="0 0 340 118" aria-hidden="true">
+      <g fill="#f7f4ec"><circle cx="40" cy="18" r="1.8"/><circle cx="120" cy="10" r="1.4"/><circle cx="208" cy="22" r="1.6"/><circle cx="90" cy="48" r="1.3"/></g>
+      <circle cx="294" cy="38" r="28" fill="#fff3cf"/><circle cx="284" cy="31" r="4.5" fill="#f2deaa"/><circle cx="303" cy="48" r="3" fill="#f2deaa"/>
+      <g fill="none" stroke="#f7f4ec" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M128 76 q40 -18 72 -36 q32 18 72 36"/>
+        <path d="M172 52 q28 -12 56 0"/>
+        <path d="M144 74 v40 M256 74 v40 M136 114 h128"/>
+        <path d="M160 88 h80 M160 88 v26 M240 88 v26 M186 88 v26 M214 88 v26"/>
+      </g>
+      <path d="M32 72 l6 -12 l6 12 l12 -4 l-6 10 l10 6 l-14 2 l2 12 l-10 -8 l-10 8 l2 -12 l-14 -2 l10 -6 l-6 -10z" fill="#f08a62" stroke="#2b2622" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M82 96 l4 -8 l4 8 l8 -3 l-4 7 l7 4 l-9 1 l1 8 l-7 -5 l-7 5 l1 -8 l-9 -1 l7 -4 l-4 -7z" fill="#f2c46a" stroke="#2b2622" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    <div class="hero-text">
+      <p class="kicker">お寺で、ゆるく熱く語り合う。</p>
+      <h1><span class="s">組織づくりの</span><span class="big">「秋の夜長」</span></h1>
+    </div>
+    <div class="friends" id="friends"></div>
+    <p class="place"><b>妙壽寺 猿江別院</b><span>対話のしおり</span></p>
+  </header>
+  <main>
+    <section data-view="first"></section>
+    <section data-view="second" hidden></section>
+    <section data-view="people" hidden></section>
+    <section data-view="about" hidden></section>
+  </main>
+</div>
+
+<nav class="tabs" aria-label="ページ切り替え">
+  <button data-go="first"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 13.8A7 7 0 0 1 15.5 3.5z" fill="currentColor" stroke="none"/></svg>前半</button>
+  <button data-go="second"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2" fill="currentColor" stroke="none"/></svg>後半</button>
+  <button data-go="people"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><circle cx="16" cy="9.5" r="2.5"/><path d="M3 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M14.5 14.4c2.8-.5 5.4.9 6.3 4.6"/></svg>参加者</button>
+  <button data-go="about"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 10.5Q12 9 21.5 10.5M4 7h16M7 7v13M17 7v13M5 13.5h14"/></svg>お寺と人</button>
+</nav>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="プロフィール" hidden><div class="grab"></div><div class="inner" id="sheetInner"></div></div>
+
+<script>
+/* ---------- 参加者（参加者テーマ分析シートより） ---------- */
+const P = {
+  "daisuke": {role:"その他", moya:"新卒社員への過剰な配慮に違和感", main:"人材の受入・育成", sub:"心理的安全性", bring:"配慮と挑戦機会をどう両立するか", h:"A", i:"E", a:"elephant"},
+  "Akihiro": {role:"その他", moya:"会社のビジョンが曖昧", main:"方向性・価値基準", sub:"意味づけ", bring:"ビジョンを日々の判断にどう接続するか", h:"C", i:"F", a:"lion"},
+  "泉": {role:"その他", moya:"コンプライアンスに組織開発を応用したい", main:"変革実行・仕組み", sub:"ガバナンス", bring:"守る仕組みを学びと変化にどう変えるか", h:"D", i:"G", a:"fox"},
+  "jun": {role:"人事・組織開発", moya:"次につながるフィードバックが回らない", main:"風土・対話・学習", sub:"仕組みとマインド", bring:"事実を学びに変える循環をどう作るか", h:"B", i:"E", a:"deer"},
+  "zono": {role:"その他", moya:"既存事業から新たな一歩へ脱却できない", main:"変革実行・仕組み", sub:"イノベーション", bring:"既存を守りながら何を小さく試せるか", h:"D", i:"E", a:"monkey"},
+  "畠山": {role:"その他", moya:"組織開発と人材育成", main:"人材の受入・育成", sub:"能力開発", bring:"育成を現場変化へどうつなげるか", h:"A", i:"H", a:"ox"},
+  "武田": {role:"人事・組織開発", moya:"無理なく持続する組織風土づくり", main:"風土・対話・学習", sub:"持続性", bring:"続けられる最小の文化施策は何か", h:"B", i:"H", a:"turtle"},
+  "iMasato": {role:"管理職", moya:"売上至上主義", main:"方向性・価値基準", sub:"成果指標", bring:"売上以外の価値をどう経営言語にするか", h:"C", i:"E", a:"tiger"},
+  "ao": {role:"管理職", moya:"進めたいことへの協力者集め", main:"変革実行・仕組み", sub:"巻き込み", bring:"誰をどの順番で巻き込むと動くか", h:"D", i:"F", a:"mouse"},
+  "halasia": {role:"人事・組織開発", moya:"本社部門がつくる価値・貨幣価値", main:"方向性・価値基準", sub:"コーポレート価値", bring:"間接部門の価値をどう測り語るか", h:"C", i:"G", a:"snake"},
+  "まり〜な": {role:"人事・組織開発", moya:"熱量差で高熱量の人が居づらい", main:"風土・対話・学習", sub:"包摂性", bring:"異なる熱量が共存できる受け皿とは何か", h:"B", i:"F", a:"peacock"},
+  "Nao": {role:"人事・組織開発", moya:"採用したい人物像が曖昧", main:"人材の受入・育成", sub:"採用基準", bring:"戦略と文化から採用像をどう定めるか", h:"A", i:"G", a:"rabbit"},
+  "waka": {role:"人事・組織開発", moya:"緊急案件で組織づくりの時間と仲間がない", main:"変革実行・仕組み", sub:"優先順位・巻き込み", bring:"緊急業務の中に組織づくりをどう埋め込むか", h:"D", i:"H", a:"boar"},
+  "Aoi": {role:"その他", moya:"新しく入った人のオンボーディング体制", main:"人材の受入・育成", sub:"オンボーディング", bring:"新しい人が早く関係と役割を得るには何が要るか", h:"A", i:"F", a:"dragon"}
+};
+const ANIMAL_INFO = {
+  elephant:{n:"象", d:"普賢菩薩を乗せて歩む、六本の牙の象。"},
+  lion:{n:"獅子", d:"文殊菩薩の乗りもの。智慧の声で場を照らす。"},
+  fox:{n:"狐", d:"猿江別院にも祀られる、お稲荷さんのお使い。"},
+  deer:{n:"鹿", d:"お釈迦さまが初めて教えを説いた、鹿野苑の鹿。"},
+  monkey:{n:"猿", d:"ここ「猿江」の名を背負う、知恵の働き者。"},
+  ox:{n:"牛", d:"大威徳明王を乗せる、粘り強い水牛。"},
+  turtle:{n:"亀", d:"ゆっくり確かに歩む、長寿と持続のしるし。"},
+  tiger:{n:"虎", d:"毘沙門天ゆかりの、勇気と守りの使い。"},
+  mouse:{n:"鼠", d:"大黒天のお使い。仲間を呼び集める名人。"},
+  snake:{n:"白蛇", d:"弁才天のお使い。価値と豊かさを運ぶ。"},
+  peacock:{n:"孔雀", d:"孔雀明王の鳥。熱い想いを色彩に変える。"},
+  rabbit:{n:"兎", d:"月に昇ったジャータカの兎。人をよく見つめる目。"},
+  boar:{n:"猪", d:"摩利支天のお使い。忙しさの中を駆け抜ける。"},
+  dragon:{n:"龍", d:"仏法を守る龍神。新しい人を迎える守り手。"}
+};
+
+/* ---------- ゆるどうぶつ ---------- */
+/* 素材にいる動物は画像、いない動物は同じ線・塗りのタッチでSVG描画 */
+const IMG_ANIMALS={elephant:1,lion:1,fox:1,monkey:1,ox:"cow",tiger:1,mouse:1,rabbit:1,deer:1,turtle:1,snake:1,peacock:1,boar:1,dragon:1};
+const K="#2b2622", SW=3.4;
+const st=`stroke="${K}" stroke-width="${SW}" stroke-linejoin="round" stroke-linecap="round"`;
+const dots=(y=74,l=68,r=92)=>`<circle cx="${l}" cy="${y}" r="3.3" fill="${K}"/><circle cx="${r}" cy="${y}" r="3.3" fill="${K}"/>`;
+const mo=(y=84,x=80)=>`<path d="M${x-3.5} ${y} h7" ${st} fill="none"/>`;
+const bust=(fill)=>`<path d="M50 104 C46 128 44 146 46 162 L118 162 C118 146 116 126 112 104" fill="${fill}" ${st}/><path d="M112 132 q-12 4 -20 -2" fill="none" ${st}/>`;
+const DRAW={
+  deer:()=>`${bust("#c9945f")}<path d="M74 148 q6 -20 0 -40 l14 0 q-6 20 0 40" fill="#f3e2c6"/>
+    <path d="M58 44 l-8 -22 M53 31 l-12 -2 M55 38 l-10 6" fill="none" ${st}/><path d="M102 44 l8 -22 M107 31 l12 -2 M105 38 l10 6" fill="none" ${st}/>
+    <ellipse cx="36" cy="64" rx="15" ry="8" transform="rotate(-18 36 64)" fill="#c9945f" ${st}/><ellipse cx="124" cy="64" rx="15" ry="8" transform="rotate(18 124 64)" fill="#c9945f" ${st}/>
+    <ellipse cx="80" cy="76" rx="36" ry="34" fill="#c9945f" ${st}/>
+    <circle cx="66" cy="54" r="3" fill="#fbf1de"/><circle cx="80" cy="50" r="3" fill="#fbf1de"/><circle cx="94" cy="54" r="3" fill="#fbf1de"/>
+    <ellipse cx="80" cy="92" rx="13" ry="9" fill="#f3e2c6"/><ellipse cx="80" cy="88" rx="4" ry="3" fill="${K}"/>${dots(74)}`,
+  turtle:()=>`<path d="M22 162 C22 128 46 114 80 114 C114 114 138 128 138 162z" fill="#6f9b5a" ${st}/>
+    <path d="M44 162 l8 -26 h56 l8 26 M52 136 l-14 -8 M108 136 l14 -8 M80 136 v-22" fill="none" stroke="#3f6a35" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M58 120 C56 100 58 96 62 92 L98 92 C102 96 104 100 102 120" fill="#a5d18f" ${st}/>
+    <ellipse cx="80" cy="72" rx="34" ry="30" fill="#a5d18f" ${st}/>${dots(72,68,92)}${mo(82)}`,
+  snake:()=>`${bust("#f1eff7")}<path d="M66 162 v-50 M94 162 v-50" stroke="#d8d3e6" stroke-width="2.4"/><path d="M66 124 h28 M66 138 h28 M66 152 h28" stroke="#d8d3e6" stroke-width="2.4"/>
+    <path d="M80 36 C46 36 40 62 42 78 C44 98 60 106 80 106 C100 106 116 98 118 78 C120 62 114 36 80 36z" fill="#f1eff7" ${st}/>
+    <circle cx="66" cy="52" r="3" fill="#d8d3e6"/><circle cx="80" cy="47" r="3" fill="#d8d3e6"/><circle cx="94" cy="52" r="3" fill="#d8d3e6"/>
+    ${dots(76,67,93)}<path d="M80 92 v8 l-4 5 M80 100 l4 5" fill="none" stroke="#e5484d" stroke-width="2.6" stroke-linecap="round"/>`,
+  peacock:()=>{let t="";for(let i=0;i<7;i++){const a=(-165+i*25)*Math.PI/180,x=80+62*Math.cos(a),y=110+62*Math.sin(a);
+      t+=`<ellipse cx="${x}" cy="${y}" rx="12" ry="12" fill="#5fa58a" ${st}/><circle cx="${x}" cy="${y}" r="6" fill="#f2c46a"/><circle cx="${x}" cy="${y}" r="3" fill="#2e5fa0"/>`;}
+    return t+`${bust("#5f97d6")}
+    <path d="M80 40 v-14 M70 42 l-6 -12 M90 42 l6 -12" fill="none" ${st}/><circle cx="80" cy="24" r="4.5" fill="#5f97d6" ${st}/><circle cx="63" cy="28" r="4.5" fill="#5f97d6" ${st}/><circle cx="97" cy="28" r="4.5" fill="#5f97d6" ${st}/>
+    <ellipse cx="80" cy="74" rx="34" ry="32" fill="#5f97d6" ${st}/>
+    <path d="M68 86 q12 -8 24 0 q-12 10 -24 0z" fill="#f3b04a" ${st}/>${dots(72,66,94)}`},
+  boar:()=>`${bust("#9b6b47")}
+    <path d="M46 52 L40 30 L62 40z" fill="#9b6b47" ${st}/><path d="M114 52 L120 30 L98 40z" fill="#9b6b47" ${st}/>
+    <ellipse cx="80" cy="76" rx="38" ry="34" fill="#9b6b47" ${st}/>
+    <path d="M68 44 l4 -8 l4 6 l4 -8 l4 8 l4 -6 l4 8" fill="#6e4a30" ${st}/>
+    <path d="M60 100 q-4 -6 0 -12" fill="none" stroke="#fffaf0" stroke-width="4" stroke-linecap="round"/><path d="M100 100 q4 -6 0 -12" fill="none" stroke="#fffaf0" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="80" cy="92" rx="14" ry="10" fill="#d99a86" ${st}/><ellipse cx="75" cy="92" rx="2.4" ry="3.4" fill="${K}"/><ellipse cx="85" cy="92" rx="2.4" ry="3.4" fill="${K}"/>${dots(72,66,94)}`,
+  dragon:()=>`${bust("#86c79a")}<path d="M66 162 v-50 h28 v50" fill="#e9f3c9"/><path d="M66 126 h28 M66 142 h28" stroke="#c9d9a0" stroke-width="2.4"/>
+    <path d="M58 46 q-8 -16 -2 -28 q6 12 14 20" fill="#f2c46a" ${st}/><path d="M102 46 q8 -16 2 -28 q-6 12 -14 20" fill="#f2c46a" ${st}/>
+    <path d="M44 92 q-16 4 -22 -8 M116 92 q16 4 22 -8" fill="none" ${st}/>
+    <ellipse cx="80" cy="76" rx="38" ry="34" fill="#86c79a" ${st}/>
+    <path d="M70 44 l5 -8 l5 8 l5 -8 l5 8" fill="#e8805a" ${st}/>
+    <ellipse cx="80" cy="94" rx="16" ry="9" fill="#bfe6c8" ${st}/><circle cx="74" cy="92" r="2.2" fill="${K}"/><circle cx="86" cy="92" r="2.2" fill="${K}"/>${dots(72,66,94)}`
+};
+function animal(key){
+  const name=ANIMAL_INFO[key].n;
+  if(IMG_ANIMALS[key]){const f=IMG_ANIMALS[key]===1?key:IMG_ANIMALS[key];return `<span class="av"><img src="img/a/${f}.png" alt="${name}" loading="lazy"></span>`;}
+  return `<span class="av"><svg viewBox="0 0 160 160" role="img" aria-label="${name}"><rect width="160" height="160" fill="#fffbf0"/>${DRAW[key]()}</svg></span>`;
+}
+
+/* ---------- チーム（前半＝同質／後半＝異質） ---------- */
+const FIRST = [
+  {id:"A", name:"人材受入・育成", c:"#f2c46a", common:"採用 → 受入 → 育成の一貫性", members:["daisuke","畠山","Nao","Aoi"],
+   qs:[{t:"人が入ってから力を発揮するまでを、どう設計するか", src:"メインの問い"},
+       {t:"採用で描いた人物像と、入社後に実際に伸ばしている力はつながっている？ ずれているなら、どこで？"},
+       {t:"「守る配慮」と「任せる挑戦」。新しく来た人にとって、ちょうどいい境目はどこにある？"}],
+   hint:"人事施策の話に閉じがち。現場の上司・同僚の目線も混ぜてみよう。"},
+  {id:"B", name:"風土・対話・学習", c:"#f08a62", common:"フィードバック・熱量・習慣", members:["jun","武田","まり〜な"],
+   qs:[{t:"本音と学習が持続的に回る風土を、どうつくるか", src:"メインの問い"},
+       {t:"職場で「本音が言えた」「ちゃんと受け取ってもらえた」と感じた瞬間。そこには何があった？"},
+       {t:"熱量も立場も違う人たちが、無理なく続けられるフィードバックの「小さな習慣」とは？"}],
+   hint:"共感しやすいぶん、前提を疑いにくい。「本当にそう？」も歓迎。"},
+  {id:"C", name:"方向性・価値基準", c:"#8fd1b5", common:"ビジョン・価値・成果指標", members:["Akihiro","iMasato","halasia"],
+   qs:[{t:"何を価値とし、判断基準としてどう機能させるか", src:"メインの問い"},
+       {t:"売上の数字には表れないけれど「これは確かに価値だ」と言える仕事を、ひとつ挙げるなら？"},
+       {t:"会議で迷ったとき、ビジョンを「判断の物差し」として使うには、どんな言葉が足りない？"}],
+   hint:"概念論で終わりやすい。最後は「明日の自分の職場では？」に戻ろう。"},
+  {id:"D", name:"変革実行・仕組み", c:"#b9acf0", common:"変革・巻き込み・実行余白", members:["泉","zono","ao","waka"],
+   qs:[{t:"変えたいことを、日常業務の中でどう動かすか", src:"メインの問い"},
+       {t:"変化を一緒に起こす「最初の一人」は誰？ その人に、どう声をかける？"},
+       {t:"ルールや既存業務を「止める理由」から「試す場」に変えられるとしたら、どこから始める？"}],
+   hint:"制度や構造の話に寄りがち。関わる人の気持ちにも目を向けよう。"}
+];
+const SECOND = [
+  {id:"E", name:"人 × 学習 × 成果 × 変革", c:"#f2c46a", common:"受入 × フィードバック × 成果指標 × 新規挑戦", members:["daisuke","jun","zono","iMasato"],
+   qs:[{t:"人が挑戦し、学び、成果につながる「最小の実験」は？", src:"メインの問い"},
+       {t:"新人もベテランも「失敗してもいい」と思える挑戦の広さは、どのくらい？"},
+       {t:"挑戦から学んだことを、売上以外の「成果」として認め合うには、どう測り、どう語る？"}],
+   hint:"成果至上と心理的安全性を対立させない。両立の形を探そう。"},
+  {id:"F", name:"受入 × 熱量 × ビジョン × 共創", c:"#f08a62", common:"オンボーディング × 包摂 × 方向性 × 巻き込み", members:["Akihiro","ao","まり〜な","Aoi"],
+   qs:[{t:"最初の30日で、誰と何を共有すれば仲間になる？", src:"メインの問い"},
+       {t:"熱量の高い人も低い人も「ここにいていい」と思える場には、何がある？"},
+       {t:"ビジョンを「説明する」のでなく「一緒に語り直す」場をつくるなら、最初に誰を巻き込む？"}],
+   hint:"熱量の高い・低いに優劣をつけない。"},
+  {id:"G", name:"採用 × ガバナンス × 本社価値", c:"#8fd1b5", common:"人物像 × コンプライアンス × 間接部門の価値", members:["泉","halasia","Nao"],
+   qs:[{t:"採用基準・行動規範・価値指標を、一枚の絵でつなぐと？", src:"メインの問い"},
+       {t:"「ルールを守れる人」の先にある「ルールを良くできる人」とは、どんな人？"},
+       {t:"本社・管理部門の仕事の価値を、現場の人が実感できる言葉にすると？"}],
+   hint:"制度設計だけで、現場との対話を省かない。"},
+  {id:"H", name:"育成 × 風土 × 実行余白", c:"#b9acf0", common:"人材育成 × 持続する文化 × 優先順位", members:["畠山","武田","waka"],
+   qs:[{t:"週15分でも続く、育成と風土づくりは？", src:"メインの問い"},
+       {t:"緊急案件に追われる日でも、なぜか続いている習慣は何？ そこに何を乗せられる？"},
+       {t:"研修で学んだことが、翌週の現場で一度でも使われるための仕掛けは？"}],
+   hint:"低負荷を、低インパクトにしない。"}
+];
+
+/* ---------- コミュニケーター ---------- */
+const COMM = [
+  {nick:"いでとも", full:"井出 朋", org:"三菱電機　全社変革プロジェクトグループ（記事掲載時）", photo:"img/idetomo.jpg",
+   bio:"技術系部門の出身。はじめは1on1に懐疑的だったが、本間浩輔氏の講演をきっかけに「部下の成長のための時間」と捉え直し、風土改革プロジェクトで1on1の浸透を旗振り。",
+   fb:"https://www.facebook.com/share/1FGfyoAPT6/",
+   links:[["「なぜ上司に本音を話さなければいけないの？」それでも三菱電機が対話をあきらめない理由（ダイヤモンド・オンライン）","https://diamond.jp/articles/-/367659"],["三菱電機、「言ったもん負け」やめる　不正根絶へ風土変革（日本経済新聞）","https://www.nikkei.com/article/DGXZQOUC1120I0R11C24A0000000/"]]},
+  {nick:"のぶ", full:"佐藤 伸剛", org:"損害保険ジャパン　カルチャー変革推進部（記事掲載時）", photo:"img/nobu.jpg",
+   bio:"経営陣が全国の営業部・支店を訪ね、現場の従業員と直接対話する取り組みをリード。「声を上げられる、上げた声が実現される経験をしてほしい」。",
+   fb:"https://www.facebook.com/share/1FeJTaVeWq/",
+   links:[["現場との対話からはじめる、損保ジャパンのカルチャー変革（NewsPicks）","https://newspicks.com/news/15823622/body/"]]},
+  {nick:"ほっそん", full:"細山田 隼人", org:"", photo:"img/hosson.jpg",
+   bio:"現場から立ち上がった社内コミュニティで、経営を動かしてきた実践者。",
+   fb:"https://www.facebook.com/share/1F7XPwZqqX/",
+   links:[["現場発コミュニティが、経営を動かす（NewsPicks）","https://newspicks.com/news/14887952/body/"]]}
+];
+const MAP_URL="https://maps.app.goo.gl/gHn9WWxjU3F1yi4dA";
+
+/* ---------- 描画 ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ICON={
+  clap:`<svg viewBox="0 0 40 40"><path d="M12 30 L8 18 q-1 -3 2 -4 q3 -1 4 2 l2 6 l-2 -10 q0 -3 3 -3 q3 0 3 3 l1 8 l0 -10 q0 -3 3 -3 q3 0 3 3 l0 12 q2 -4 4 -3 q2 1 1 4 l-4 9 q-3 6 -10 6 q-6 0 -9 -5z" fill="#f2c46a"/><path d="M30 8 l3 -3 M33 13 l4 -1 M26 5 l0 -4" stroke="#f08a62" stroke-width="2.4" stroke-linecap="round"/></svg>`,
+  circle:`<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="none" stroke="#f2c46a" stroke-width="3" stroke-dasharray="4 4"/><circle cx="20" cy="7" r="4" fill="#f7f4ec"/><circle cx="31" cy="26" r="4" fill="#f7f4ec"/><circle cx="9" cy="26" r="4" fill="#f7f4ec"/><circle cx="20" cy="20" r="3.5" fill="#f08a62"/></svg>`,
+  yes:`<svg viewBox="0 0 40 40"><path d="M4 8 h20 q4 0 4 4 v8 q0 4 -4 4 h-12 l-6 5 v-5 h-2 q-4 0 -4 -4z" fill="#f7f4ec"/><path d="M18 18 h16 q4 0 4 4 v7 q0 4 -4 4 h-1 v5 l-6 -5 h-9 q-4 0 -4 -4z" fill="#f2c46a"/><path d="M24 25.5 h8 M28 21.5 v8" stroke="#141312" stroke-width="2.6" stroke-linecap="round"/></svg>`
+};
+const RULES=`
+<div class="rules">
+  <h3>全チーム共通　グラウンドルール</h3>
+  <div class="rule-list">
+    <div class="rule">${ICON.clap}<b>拍手</b></div>
+    <div class="rule">${ICON.circle}<b>ともに<br>場を作る</b></div>
+    <div class="rule">${ICON.yes}<b>Yes, and</b></div>
+  </div>
+  <div class="flow">
+    <div class="lbl" style="margin:0">対話の進め方</div>
+    <ol><li>ひとりずつ自己紹介をまわす</li><li>問いと、それぞれのモヤモヤを持ち寄って、行き来しながら話す</li></ol>
+    <p>ゆるいルールでOK。</p>
+    <div class="clap">👏 拍手はわすれずに！</div>
+  </div>
+</div>`;
+
+function teamCard(t){
+  return `<article class="team" style="--c:${t.c}">
+    <button class="team-btn" aria-expanded="false">
+      <span class="mark">${t.id}</span>
+      <span class="t">
+        <span class="name">${esc(t.name)}</span>
+        <span class="common">${esc(t.common)}</span>
+        <span class="faces">${t.members.map(m=>`<span class="face">${animal(P[m].a)}${esc(m)}</span>`).join("")}</span>
+      </span>
+      <span class="chev" aria-hidden="true">›</span>
+    </button>
+    <div class="team-body" hidden>
+      <div><div class="lbl">共通項</div><div class="common-box">${esc(t.common)}</div></div>
+      <div><div class="lbl">話し合いの問い</div>
+        <div class="qs">${t.qs.map((q,i)=>`<div class="q"><span class="n">問${i+1}</span><span class="txt">${esc(q.t)}${q.src?`<small>${q.src}</small>`:""}</span></div>`).join("")}</div></div>
+      <div><div class="lbl">メンバーとモヤモヤ（タップでプロフィール）</div>
+        <div class="mlist">${t.members.map(m=>`<button class="mrow" data-person="${esc(m)}">${animal(P[m].a)}<span class="who"><b>${esc(m)}</b><span>${esc(P[m].moya)}</span></span></button>`).join("")}</div></div>
+      <p class="hint"><b>ヒント</b>　${esc(t.hint)}</p>
+    </div>
+  </article>`;
+}
+function renderHalf(el,half,data){
+  const f=half==="first";
+  el.innerHTML=`
+    <div class="sec-head">
+      <span class="tag">${f?"前半":"後半"}</span>
+      <h2>${f?"同じモヤモヤで、深く掘る":"違うレンズを、掛け合わせる"}</h2>
+      <p>${f?"近い問題意識をもつ仲間と、課題の根っこを掘り下げます。":"異なる視点を持ち寄り、新しい打ち手を一緒に描きます。"}</p>
+      <span class="tap">▼ 自分のチームをタップすると、問いが開きます</span>
+    </div>
+    <div class="teams">${data.map(teamCard).join("")}</div>
+    ${RULES}`;
+}
+function renderPeople(el){
+  el.innerHTML=`
+    <div class="sec-head">
+      <span class="tag">参加者</span>
+      <h2>今夜の14名</h2>
+      <p>お一人に一匹、仏さまのお使いの動物がつきました。</p>
+      <span class="tap">▼ 名前をタップするとプロフィールが開きます</span>
+    </div>
+    <div class="people">${Object.keys(P).map(n=>`<button class="person" data-person="${esc(n)}">${animal(P[n].a)}<span class="nm">${esc(n)}</span><span class="an">${ANIMAL_INFO[P[n].a].n}</span></button>`).join("")}</div>`;
+}
+function renderAbout(el){
+  el.innerHTML=`
+    <div class="sec-head"><span class="tag">お寺と人</span><h2>今夜の場と、つなぎ手</h2></div>
+    <div class="card">
+      <figure class="temple-photo"><img src="img/temple.jpg" alt="妙壽寺 猿江別院の境内にある猿江稲荷社。朱色の鳥居と両脇の狐の像" width="828" height="599" loading="lazy"><figcaption>境内の猿江稲荷社。鳥居の両脇で狐が迎えてくれます</figcaption></figure>
+      <h3>妙壽寺 猿江別院</h3>
+      <p>法華宗本門流のお寺・本覺山 妙壽寺（世田谷区北烏山）の別院です。妙壽寺は江戸のはじめに谷中で創建され、1662年にここ猿江村へ移りました。以来260年あまり、猿江稲荷の別当寺も兼ねて、この土地とともにありました。</p>
+      <p>1923年の関東大震災で本堂を失い、本院は世田谷へ。2017年、ゆかりの地・猿江に別院として新たに開かれ、地域の人が集う場になっています。境内には猿江稲荷社も祀られています。</p>
+      <div class="timeline">
+        <div><b>1631</b><span>谷中に「妙感寺」として創建</span></div>
+        <div><b>1662</b><span>猿江村へ移り「妙壽寺」に</span></div>
+        <div><b>1923</b><span>関東大震災で堂宇を失い、のち世田谷へ</span></div>
+        <div><b>2017</b><span>ゆかりの猿江に別院として開かれる</span></div>
+      </div>
+      <p class="addr">東京都江東区猿江2-5-14　／　最寄り：住吉駅</p>
+      <a class="btn gold" href="${MAP_URL}" target="_blank" rel="noopener">Googleマップで写真と地図を見る ↗</a>
+    </div>
+    <div class="sec-head" style="margin-top:8px"><h2>本日のコミュニケーター</h2></div>
+    ${COMM.map(c=>`<div class="card comm">
+      <div class="comm-top"><img src="${c.photo}" alt="${esc(c.full)}さん" width="110" height="110" loading="lazy">
+        <div><div class="nick">${esc(c.nick)}</div><div class="full">${esc(c.full)}</div></div></div>
+      ${c.org?`<div class="org">${esc(c.org)}</div>`:""}
+      <p>${esc(c.bio)}</p>
+      <div class="links">${c.links.map(l=>`<a class="art" href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join("")}</div>
+      <a class="btn fb" href="${c.fb}" target="_blank" rel="noopener">Facebookでつながる ↗</a>
+    </div>`).join("")}`;
+}
+
+/* ---------- プロフィール ---------- */
+const sheet=$("#sheet"),scrim=$("#scrim");
+const teamName=(list,id)=>{const t=list.find(x=>x.id===id);return `${t.id}　${t.name}`;};
+function openPerson(n){
+  const p=P[n],a=ANIMAL_INFO[p.a];
+  $("#sheetInner").innerHTML=`
+    <div class="prof-head">${animal(p.a)}<div><h3>${esc(n)}</h3><div class="anm">${a.n}のお使い</div><div class="role">立場：${esc(p.role)}</div></div></div>
+    <div><div class="lbl">モヤモヤ</div><div class="moya">${esc(p.moya)}</div></div>
+    <dl class="kv">
+      <dt>主テーマ</dt><dd><span class="pill main">${esc(p.main)}</span></dd>
+      <dt>副テーマ</dt><dd><span class="pill">${esc(p.sub)}</span></dd>
+      <dt>持ち込む問い</dt><dd>${esc(p.bring)}</dd>
+      <dt>前半チーム</dt><dd>${esc(teamName(FIRST,p.h))}</dd>
+      <dt>後半チーム</dt><dd>${esc(teamName(SECOND,p.i))}</dd>
+    </dl>
+    <p class="anote">${esc(a.n)}：${esc(a.d)}</p>
+    <button class="close" id="closeSheet">とじる</button>`;
+  scrim.hidden=false;sheet.hidden=false;
+  requestAnimationFrame(()=>{scrim.classList.add("show");sheet.classList.add("show");});
+  sheet.scrollTop=0;
+}
+function closeSheet(){scrim.classList.remove("show");sheet.classList.remove("show");setTimeout(()=>{scrim.hidden=true;sheet.hidden=true;},260);}
+scrim.addEventListener("click",closeSheet);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden)closeSheet();});
+
+/* ---------- 画面切り替え ---------- */
+const views=["first","second","people","about"];
+function show(v,scroll=true){
+  if(!views.includes(v))v="first";
+  document.querySelectorAll("section[data-view]").forEach(s=>s.hidden=s.dataset.view!==v);
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.removeAttribute("aria-current"));
+  document.querySelector(`nav.tabs button[data-go="${v}"]`).setAttribute("aria-current","page");
+  try{history.replaceState(null,"","#"+v);}catch(e){}
+  if(scroll){const top=$("main").getBoundingClientRect().top+window.scrollY-8;window.scrollTo(0,v==="first"?0:top);}
+}
+document.addEventListener("click",e=>{
+  const go=e.target.closest("[data-go]");if(go){show(go.dataset.go);return;}
+  if(e.target.closest("#closeSheet")){closeSheet();return;}
+  const per=e.target.closest("[data-person]");if(per){openPerson(per.dataset.person);return;}
+  const tb=e.target.closest(".team-btn");
+  if(tb){const card=tb.parentElement,body=card.querySelector(".team-body"),open=!card.classList.contains("open");
+    card.classList.toggle("open",open);body.hidden=!open;tb.setAttribute("aria-expanded",open);}
+});
+document.getElementById("friends").innerHTML=Object.keys(P).slice(0,7).map((n,i)=>animal(P[n].a).replace('class="av"',`class="av" style="--r:${[-6,4,-3,6,-5,3,-4,5,-2][i]}deg"`)).join("");
+renderHalf(document.querySelector('[data-view="first"]'),"first",FIRST);
+renderHalf(document.querySelector('[data-view="second"]'),"second",SECOND);
+renderPeople(document.querySelector('[data-view="people"]'));
+renderAbout(document.querySelector('[data-view="about"]'));
+show((location.hash||"#first").slice(1),false);
+</script>
+
+</body>
+</html>
