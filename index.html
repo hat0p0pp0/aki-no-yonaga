@@ -153,6 +153,12 @@ section[data-view]{padding-block:14px 28px;display:grid;gap:20px}
 .survey h3{font-family:var(--f-hand);font-weight:400;font-size:22px}
 .survey p{font-size:15px;color:#4a433c}
 .survey .btn{background:var(--momiji);color:var(--sumi)}
+.linecard{background:var(--panel);border:2px solid #06c755;border-radius:20px;padding:20px 18px;display:grid;gap:10px}
+.linecard .lc-tag{justify-self:start;font-size:13px;font-weight:700;padding:3px 12px;border-radius:99px;background:#06c755;color:#fff}
+.linecard h3{font-size:22px;line-height:1.45;display:grid;gap:2px}
+.linecard h3 small{font-size:13.5px;font-weight:700;color:var(--chalk-2)}
+.linecard p{font-size:15px;color:var(--chalk-2)}
+.btn.line{background:#06c755;color:#fff}
 .comm-top{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center}
 .comm-top img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--tomyo)}
 .comm-top .nick{font-size:24px;font-weight:900;line-height:1.3}
@@ -359,6 +365,8 @@ const COMM = [
 ];
 const SURVEY_URL="https://docs.google.com/forms/d/e/1FAIpQLSfyv1RgSgvGHGBYUcgeaAPR_H8HAZciQyM5ObZVFbgkm5QLkA/viewform";
 const SURVEY=`<div class="survey"><h3>おわりに、ひと言アンケート</h3><p>今夜の感想や学び、次に話したいテーマを教えてください。3分ほどで終わります。</p><a class="btn" href="${SURVEY_URL}" target="_blank" rel="noopener">アンケートに答える ↗</a></div>`;
+const LINE_URL="https://line.me/ti/g2/4B0kJCp_eywZmGE6tzzPFDPspTtgwZQNvG4uSA";
+const LINECARD=`<div class="linecard"><span class="lc-tag">このあとも、つながろう</span><h3><small>LINEオープンチャット</small>「そしきかるちゃー」<small>通称 そしかる</small></h3><p>今夜の続きや、職場で試したこと、次回の案内をここで共有します。ニックネームで気軽に参加できます。</p><a class="btn line" href="${LINE_URL}" target="_blank" rel="noopener">LINEオープンチャットに参加する ↗</a></div>`;
 const MAP_URL="https://maps.app.goo.gl/gHn9WWxjU3F1yi4dA";
 
 /* ---------- 描画 ---------- */
@@ -416,7 +424,7 @@ function renderHalf(el,half,data){
       <span class="tap">▼ 自分のチームをタップすると、問いが開きます</span>
     </div>
     <div class="teams">${data.map(teamCard).join("")}</div>
-    ${RULES}${half==="second"?SURVEY:""}`;
+    ${RULES}${half==="second"?SURVEY+LINECARD:""}`;
 }
 function renderPeople(el){
   el.innerHTML=`
@@ -453,7 +461,7 @@ function renderAbout(el){
       <p>${esc(c.bio)}</p>
       <div class="links">${c.links.map(l=>`<a class="art" href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join("")}</div>
       <a class="btn fb" href="${c.fb}" target="_blank" rel="noopener">Facebookでつながる ↗</a>
-    </div>`).join("")}${SURVEY}`;
+    </div>`).join("")}${SURVEY}${LINECARD}`;
 }
 
 /* ---------- プロフィール ---------- */
