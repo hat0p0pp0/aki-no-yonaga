@@ -159,6 +159,8 @@ section[data-view]{padding-block:14px 28px;display:grid;gap:20px}
 .linecard h3 small{font-size:13.5px;font-weight:700;color:var(--chalk-2)}
 .linecard p{font-size:15px;color:var(--chalk-2)}
 .btn.line{background:#06c755;color:#fff}
+.linecard .lc-alt{font-size:13.5px}
+.btn.copy{width:100%;background:var(--panel-2);color:var(--chalk);border:1px solid var(--line)}
 .comm-top{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center}
 .comm-top img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--tomyo)}
 .comm-top .nick{font-size:24px;font-weight:900;line-height:1.3}
@@ -365,8 +367,8 @@ const COMM = [
 ];
 const SURVEY_URL="https://docs.google.com/forms/d/e/1FAIpQLSfyv1RgSgvGHGBYUcgeaAPR_H8HAZciQyM5ObZVFbgkm5QLkA/viewform";
 const SURVEY=`<div class="survey"><h3>おわりに、ひと言アンケート</h3><p>今夜の感想や学び、次に話したいテーマを教えてください。3分ほどで終わります。</p><a class="btn" href="${SURVEY_URL}" target="_blank" rel="noopener">アンケートに答える ↗</a></div>`;
-const LINE_URL="https://line.me/ti/g2/4B0kJCp_eywZmGE6tzzPFDPspTtgwZQNvG4uSA";
-const LINECARD=`<div class="linecard"><span class="lc-tag">このあとも、つながろう</span><h3><small>LINEオープンチャット</small>「そしきかるちゃー」<small>通称 そしかる</small></h3><p>今夜の続きや、職場で試したこと、次回の案内をここで共有します。ニックネームで気軽に参加できます。</p><a class="btn line" href="${LINE_URL}" target="_blank" rel="noopener">LINEオープンチャットに参加する ↗</a></div>`;
+const LINE_URL="https://line.me/ti/g2/4B0kJCp_eywZmGE6tzzPFDPspTtgwZQNvG4uSA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default";
+const LINECARD=`<div class="linecard"><span class="lc-tag">このあとも、つながろう</span><h3><small>LINEオープンチャット</small>「そしきかるちゃー」<small>通称 そしかる</small></h3><p>今夜の続きや、職場で試したこと、次回の案内をここで共有します。ニックネームで気軽に参加できます。</p><a class="btn line" href="${LINE_URL}" rel="noopener">LINEオープンチャットに参加する</a><p class="lc-alt">開けないときは、リンクをコピーしてLINEアプリやブラウザに貼り付けてください。</p><button class="btn copy" type="button" data-copy="line">リンクをコピー</button></div>`;
 const MAP_URL="https://maps.app.goo.gl/gHn9WWxjU3F1yi4dA";
 
 /* ---------- 描画 ---------- */
@@ -500,6 +502,10 @@ function show(v,scroll=true){
   if(scroll){const top=$("main").getBoundingClientRect().top+window.scrollY-8;window.scrollTo(0,v==="first"?0:top);}
 }
 document.addEventListener("click",e=>{
+  const cp=e.target.closest("[data-copy]");
+  if(cp){const done=()=>{cp.textContent="コピーしました";setTimeout(()=>cp.textContent="リンクをコピー",2000);};
+    try{navigator.clipboard.writeText(LINE_URL).then(done,()=>{window.prompt("このリンクをコピーしてください",LINE_URL);});}catch(err){window.prompt("このリンクをコピーしてください",LINE_URL);}
+    return;}
   const go=e.target.closest("[data-go]");if(go){show(go.dataset.go);return;}
   if(e.target.closest("#closeSheet")){closeSheet();return;}
   const per=e.target.closest("[data-person]");if(per){openPerson(per.dataset.person);return;}
